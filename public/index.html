@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="input">
+    
+    <div id="message">
+    </div>
+    <div id="opponent"></div>
+    <div id="messages"></div>
+    <!-- <div class="inputs">
+        <select id="options">
+            <option value="Any Category">X</option>
+            <option value="Books">O</option>
+        </select>
+        </div> -->
+    </div>
+    
+    
+    <section>
+        <div class="container">
+            <div id="container-fluid centerButton display">
+            <div class=" buttons">
+                <div class="first-row">
+                <div class="button" id="a"></div>
+                <div class="button" id="b"></div>
+                <div class="button" id="c"></div>
+                </div>
+                <div class="second-row">
+                <div class="button" id="d"></div>
+                <div class="button" id="e"></div>
+                <div class="button" id="f"></div>
+                </div>
+                <div class="third-row">
+                <div class="button" id="g"></div>
+                <div class="button" id="h"></div>
+                <div class="button" id="i"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+<style>
+    .input{
+        margin-top: 30px;
+        margin-left: 30px;
+        display: flex;
+    }
+    .container{
+    width: 400px;
+    box-shadow: 0px 0px 43px 17px rgba(153,153,153,1); 
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    margin-top: 100px;
+    padding-top: 20px;
+    }
+    #display{
+        text-align: right;
+        font-size: 25px;
+
+    }
+    .input>div{
+        padding-left: 30px;
+    }
+    .buttons{
+       
+        display: flex;
+      
+    }
+    
+    .button{
+        border: 0.5px solid #999;
+        height: 120px;
+        text-align: center;
+        font-size: 25px;
+        cursor: pointer;
+        width: 122px;
+    }
+</style>
+<script defer src="/socket.io/socket.io.js"></script>
+<script defer src="client.js"></script>
+</body>
+</html>

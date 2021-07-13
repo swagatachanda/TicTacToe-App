@@ -1,0 +1,1 @@
+Use Cors extension for Google Chrome
