@@ -1,5 +1,6 @@
 const socket =io()
 var symbol
+var flag=0
 
     socket.on("connect",()=>{
         console.log("Connected to server")
@@ -28,6 +29,7 @@ socket.on('user-joined', name=>{
 
 const makeMove=(e)=>{
     e.preventDefault()
+
     console.log(e.currentTarget)
     if(!myTurn){
         return
@@ -99,21 +101,20 @@ const isGameOver=() =>{
 const renderTurnMessage=()=> {
     if (!myTurn) {
       document.getElementById("messages").innerHTML="Your opponent's turn"
-      document.querySelector(".button").setAttribute("disabled", true)
     } else {
       document.getElementById("messages").innerHTML="Your turn."
-      document.querySelector(".button").removeAttribute("disabled")
     }
 }
 
 
 
-
-    document.querySelector(".button").setAttribute("disabled",true)
+   
+    console.log(document.getElementById("messages").innerText)
     var Icon =document.getElementsByClassName("button")
     for(let i=0;i<Icon.length;i++){
         Icon[i].addEventListener("click", makeMove);
     }
+
     socket.on("Move Made",(data)=>{
         console.log(data.position)
         document.getElementById(data.position).innerHTML=data.symbol
@@ -124,7 +125,6 @@ const renderTurnMessage=()=> {
         if(!isGameOver()){
             if(gameTied()){
                 document.getElementById("messages").innerHTML="Game Tied"
-                document.querySelector(".button").setAttribute("disabled",true)
             }
             else{
                 renderTurnMessage()
@@ -136,7 +136,11 @@ const renderTurnMessage=()=> {
             }
             else{
                 document.getElementById("messages").innerHTML="Game Over. You won!!!"
+              
             }
+        for(let i=0;i<Icon.length;i++){
+            Icon[i].removeEventListener("click", makeMove);
+        }
         }
     })
     socket.on("Game Begin",(data)=>{
@@ -147,8 +151,14 @@ const renderTurnMessage=()=> {
 
     socket.on("Opponent Left",()=>{
         document.getElementById("messages").innerHTML="Your opponent has left the game!!"
-        document.querySelector(".button").setAttribute("disabled",true)
     })
+
+
+
+
+
+
+
 
 
 
