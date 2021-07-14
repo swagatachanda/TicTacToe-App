@@ -1,6 +1,6 @@
 const socket =io()
 var symbol
-var flag=0
+
 
     socket.on("connect",()=>{
         console.log("Connected to server")
