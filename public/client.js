@@ -10,22 +10,11 @@ var symbol
         console.log("Disconnected from server")
     })
  
-    const messagecreate = document.getElementById("message")
-    const messageopponent = document.getElementById("opponent")
+  
+const score=0
+const round=0
 
-    const append=(message)=>{
-        messagecreate.innerHTML=message
-    }
-    const appendopponent=(message)=>{
-        messageopponent.innerHTML=message
-    }
 
-const name = prompt("Enter your name to join");
-append(`${name} joined`);
-socket.emit('new-user-joined', name);
-socket.on('user-joined', name=>{
-    appendopponent(`Opponent : ${name} joined`)
-})
 
 const makeMove=(e)=>{
     e.preventDefault()
@@ -98,11 +87,14 @@ const isGameOver=() =>{
 }
 
 
+
+
 const renderTurnMessage=()=> {
-    if (!myTurn) {
-      document.getElementById("messages").innerHTML="Your opponent's turn"
+       if (!myTurn) {
+        document.getElementById("messages").innerHTML=`Your opponent's turn.`
+      
     } else {
-      document.getElementById("messages").innerHTML="Your turn."
+      document.getElementById("messages").innerHTML=`Your turn.`
     }
 }
 

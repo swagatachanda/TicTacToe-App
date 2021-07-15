@@ -4,11 +4,14 @@ const SocketIO = require("socket.io")
 const express = require("express")
 const app = express()
 
+
 const http = require("http")
 const server = http.createServer(app)
 const io = SocketIO(server)
 
 app.use(express.static(publicpath))
+
+
 
 var players={},
 unmatched
@@ -38,10 +41,6 @@ const getopponent=(socket)=>{
 }
 
 io.on('connection',(socket)=>{
-    console.log("A new user just landed")
-    socket.on('new-user-joined', name =>{
-        socket.broadcast.emit('user-joined', name)
-    })
     joingame(socket)
     if(getopponent(socket)){
         socket.emit("Game Begin",{
@@ -68,6 +67,8 @@ io.on('connection',(socket)=>{
     })
    
 })
+
+
 
 
 
